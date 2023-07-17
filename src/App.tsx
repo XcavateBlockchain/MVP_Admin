@@ -1,14 +1,15 @@
 import { Routes, Route } from 'react-router-dom'
 
-import './App.css'
 import './index.css'
-import Home from './components/Home'
+import Home from './pages/Home'
+import ToAttest from './pages/credentials/ToAttest'
 
 function App() {
 
   return (
     <Routes>
       <Route path='/' element={<Home />} />
+      <Route path='/credentials/to-attest' element={<ToAttest />} />
     </Routes>
   )
 }

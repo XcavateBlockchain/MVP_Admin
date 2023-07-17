@@ -13,7 +13,7 @@ git clone https://github.com/XcavateBlockchain/MVP_Admin.git
 -   Install dependencies
 
 ```sh
-cd MVP_Backend && yarn install
+cd MVP_Admin && yarn install
 ```
 
 -   Run

@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import plugin from 'tailwindcss/plugin'
+
 export default {
   content: [
     "./index.html",
@@ -28,16 +30,32 @@ export default {
       },
       backgroundColor: {
         "main": '#EDFAFA',
+        "hover": 'var(--wanos-teal-100, #D5F5F6)',
       },
       colors: {
 
       },
       textColor: {
         "header": 'var(--wanos-teal-700, #036672)',
+        "hover": '#06a9ba',
+        "light": '#058b99',
+        "dark": '#025159',
         "placeholder": 'var(--wanos-teal-200, #AFECEF)',
+      },
+      borderColor: {
+        "main": '#AFECEF',
       }
     },
   },
-  plugins: [],
+  plugins: [
+    // eslint-disable-next-line global-require
+    require('@tailwindcss/forms'),
+    // add custom variant for expanding sidebar
+    plugin(({ addVariant, e }) => {
+      addVariant('sidebar-expanded', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => `.sidebar-expanded .${e(`sidebar-expanded${separator}${className}`)}`);
+      });
+    }),
+  ],
 }
 
