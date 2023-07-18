@@ -10,9 +10,9 @@ const Header = (props: IProps) => {
   const { sidebarOpen, setSidebarOpen } = props
 
   return (
-    <header className=' h-[100px] sticky top-0 border-b-2 border-main z-30'>
+    <header className=' h-[100px] sticky top-0 border-b-2 border-main z-30 bg-white'>
       <div className='px-4 sm:px-6 lg:px-8'>
-        <div className='flex items-center justify-between h-16 -mb-px'>
+        <div className='flex items-center justify-between h-[100px] -mb-px'>
 
           {/* Header: Left side */}
           <div className='flex'>

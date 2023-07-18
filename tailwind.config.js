@@ -31,6 +31,7 @@ export default {
       backgroundColor: {
         "main": '#EDFAFA',
         "hover": 'var(--wanos-teal-100, #D5F5F6)',
+        "button": 'var(--wanos-teal-700, #036672)',
       },
       colors: {
 
