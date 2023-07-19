@@ -30,6 +30,16 @@ export const attestCredential = (credentialId: any) => {
   )
 }
 
+export const revokeCredential = (credentialId: any) => {
+  return client.post(`/credentials/${credentialId}/revoke`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  )
+}
+
 export const getCredentialById = (credentialId: any) => {
   return client.get(`/credentials/${credentialId}/credential`,
     {
