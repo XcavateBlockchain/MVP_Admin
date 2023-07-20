@@ -11,7 +11,7 @@ const CredentialsTable = (props: IProps) => {
   return (
     <div className='bg-white shadow-lg rounded-sm border border-main relative'>
       <header className='px-5 py-4'>
-        <h2 className=' font-poppins-500 text-header text-base'>{`Counter : `} <span className='font-poppins-500 text-header text-base'>{CrednetialTableItem?.length || 0}</span></h2>
+        <h2 className=' font-poppins-500 text-header text-base'>{`Counter : `} <span className='font-poppins-500 text-header text-base'>{credentials?.length || 0}</span></h2>
       </header>
       <div>
         {/* Table */}
