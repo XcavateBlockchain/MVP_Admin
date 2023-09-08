@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { ICommonProps } from '../types'
 import SidebarLinkGroup from './SidebarLinkGroup'
-import { ActivitySvgIcon, FingerPrintSvgIcon, LogoSvgIcon, UsersSvgIcon } from '../assets/svgs'
+import { FingerPrintSvgIcon, LogoSvgIcon } from '../assets/svgs'
 
 interface IProps extends ICommonProps {
   sidebarOpen: boolean,
