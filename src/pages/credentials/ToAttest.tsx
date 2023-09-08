@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { ICommonProps } from '../../types'
+import { useState, useEffect } from 'react'
 import Layout from '../Layout'
 import { getCredentialsToAttest } from '../../api/credential'
 import CredentialsTable from '../../partials/credentials/Table'
 
-interface IProps extends ICommonProps {
-
-}
-
-const ToAttest = (props: IProps) => {
+const ToAttest = () => {
   const [credentials, setCredentials] = useState([])
 
   const getCredentials = async () => {
