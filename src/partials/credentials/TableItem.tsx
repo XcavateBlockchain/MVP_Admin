@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
-import { ICommonProps } from '../../types'
+import { ICommonProps, ICredential } from '../../types'
 
 interface IProps extends ICommonProps {
   index: number
-  credential: any
+  credential: ICredential
 }
 
 const CrednetialTableItem = (props: IProps) => {

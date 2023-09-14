@@ -20,7 +20,7 @@ export const getCredentialsAttested = () => {
   )
 }
 
-export const attestCredential = (credentialId: any) => {
+export const attestCredential = (credentialId: string) => {
   return client.post(`/credentials/${credentialId}/attest`,
     {
       headers: {
@@ -30,7 +30,7 @@ export const attestCredential = (credentialId: any) => {
   )
 }
 
-export const revokeCredential = (credentialId: any) => {
+export const revokeCredential = (credentialId: string) => {
   return client.post(`/credentials/${credentialId}/revoke`,
     {
       headers: {
@@ -40,7 +40,7 @@ export const revokeCredential = (credentialId: any) => {
   )
 }
 
-export const getCredentialById = (credentialId: any) => {
+export const getCredentialById = (credentialId: string) => {
   return client.get(`/credentials/${credentialId}/credential`,
     {
       headers: {

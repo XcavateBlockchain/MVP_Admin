@@ -1,8 +1,8 @@
 import CrednetialTableItem from './TableItem'
-import { ICommonProps } from '../../types'
+import { ICommonProps, ICredential } from '../../types'
 
 interface IProps extends ICommonProps {
-  credentials: any[],
+  credentials: ICredential[],
 }
 
 const CredentialsTable = (props: IProps) => {
@@ -41,7 +41,7 @@ const CredentialsTable = (props: IProps) => {
             <tbody className='w-full text-sm divide-y divide-main bg-main'>
               {
                 credentials.length > 0 ?
-                  credentials.map((credential: any, index: number) => {
+                  credentials.map((credential: ICredential, index: number) => {
                     return (
                       <CrednetialTableItem
                         key={index}

@@ -5,18 +5,33 @@ import { attestCredential, getCredentialById, revokeCredential } from '../../api
 import Layout from '../Layout'
 import DeveloperCredential from '../../partials/credentials/DeveloperCredential'
 import { LoadingSvgIcon } from '../../assets/svgs'
+import { ICredential, IResponse } from '../../types'
+
+interface ILocation {
+  state: {
+    _id: string
+  }
+}
+
+interface ICredentialResponse extends IResponse {
+  data: {
+    data: ICredential
+    error: string
+  }
+}
 
 const CredentialDetail = () => {
   const location = useLocation()
-  const [credential, setCredential] = useState<any>(null)
+  const [credential, setCredential] = useState<ICredential>()
   const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
-    if (location?.state?._id) {
-      const _id = location?.state?._id
+    const { state } = location as ILocation
+    if (state?._id) {
+      const _id = state?._id
 
       const getData = async () => {
-        const getResult = await getCredentialById(_id)
+        const getResult: ICredentialResponse = await getCredentialById(_id)
 
         if (getResult.status === 200 && getResult?.data?.data) {
           setCredential(getResult.data.data)
@@ -26,10 +41,21 @@ const CredentialDetail = () => {
       }
 
       getData()
+        .catch(console.error)
     }
   }, [location])
 
-  const attest = async () => {
+  function handleErrors<A extends []>(p: (...args: A) => Promise<void>): (...args: A) => void {
+    return (...args: A) => {
+      try {
+        p(...args).catch(err => console.log("Error thrown asynchronously", err))
+      } catch (err) {
+        console.log("Error thrown synchronously", err)
+      }
+    }
+  }
+
+  const attest = handleErrors(async (): Promise<void> => {
     if (credential?._id) {
       setLoading(true)
       const attestResult = await attestCredential(credential?._id)
@@ -41,9 +67,9 @@ const CredentialDetail = () => {
       setLoading(false)
       toast.warning('Failed')
     }
-  }
+  })
 
-  const revoke = async () => {
+  const revoke = handleErrors(async (): Promise<void> => {
     if (credential?._id) {
       setLoading(true)
       const revokeResult = await revokeCredential(credential?._id)
@@ -55,7 +81,7 @@ const CredentialDetail = () => {
       setLoading(false)
       toast.warning('Failed')
     }
-  }
+  })
 
   return (
     <Layout title={`Credential detail`}>

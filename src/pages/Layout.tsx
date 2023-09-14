@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 
 import Header from '../partials/Header'
 import Sidebar from '../partials/Sidebar'
 import { ICommonProps } from '../types'
 
 interface IProps extends ICommonProps {
-  children: any,
+  children: ReactNode,
   title: string,
 }
 

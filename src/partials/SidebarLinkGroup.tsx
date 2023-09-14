@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { ICommonProps } from '../types'
 
 interface IProps extends ICommonProps {
-  children: any,
+  children: (handleClick: () => void, open: boolean) => ReactNode,
   activecondition: boolean,
 }
 
@@ -15,7 +15,7 @@ const SidebarLinkGroup = (props: IProps) => {
   }
 
   return (
-    <li className={`px-3 py-3 rounded-lg mb-0.5 last:mb-0 ${activecondition && 'bg-hover'}`}>
+    <li className={`px-3 py-3 rounded-lg mb-0.5 last:mb-0 ${activecondition? 'bg-hover' : ''}`}>
       {children(handleClick, open)}
     </li>
   )
