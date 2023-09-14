@@ -20,18 +20,6 @@ const Sidebar = (props: IProps) => {
   const storedSidebarExpanded = window.localStorage.getItem('sidebar-expanded')
   const [sidebarExpanded, setSidebarExpanded] = useState<boolean>(storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true')
 
-  // close on click outside
-  useEffect(() => {
-    const clickHandler = (ev: MouseEvent) => {
-      if (!sidebar.current || !trigger.current) return
-      if (!sidebarOpen || sidebar.current.contains(ev.target) || trigger.current.contains(ev.target)) return
-      setSidebarOpen(false)
-    }
-
-    document.addEventListener('click', clickHandler)
-    return () => document.removeEventListener('click', clickHandler)
-  })
-
   // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = (ev: KeyboardEvent) => {
