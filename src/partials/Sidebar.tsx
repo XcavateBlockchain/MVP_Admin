@@ -18,13 +18,13 @@ const Sidebar = (props: IProps) => {
   const sidebar = useRef<HTMLDivElement>(null)
 
   const storedSidebarExpanded = window.localStorage.getItem('sidebar-expanded')
-  const [sidebarExpanded, setSidebarExpanded] = useState<Boolean>(storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true')
+  const [sidebarExpanded, setSidebarExpanded] = useState<boolean>(storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true')
 
   // close on click outside
   useEffect(() => {
-    const clickHandler = (event: any) => {
+    const clickHandler = (ev: MouseEvent) => {
       if (!sidebar.current || !trigger.current) return
-      if (!sidebarOpen || sidebar.current.contains(event.target) || trigger.current.contains(event.target)) return
+      if (!sidebarOpen || sidebar.current.contains(ev.target) || trigger.current.contains(ev.target)) return
       setSidebarOpen(false)
     }
 
@@ -34,8 +34,8 @@ const Sidebar = (props: IProps) => {
 
   // close if the esc key is pressed
   useEffect(() => {
-    const keyHandler = (event: any) => {
-      if (!sidebarOpen || event.keyCode !== 27) return
+    const keyHandler = (ev: KeyboardEvent) => {
+      if (!sidebarOpen || ev.keyCode !== 27) return
       setSidebarOpen(false)
     }
     document.addEventListener('keydown', keyHandler)
@@ -103,8 +103,7 @@ const Sidebar = (props: IProps) => {
                     <React.Fragment>
                       <a
                         href="#0"
-                        className={`block text-header hover:text-hover truncate transition duration-150 ${pathname.includes('credentials') && 'hover:text-hover'
-                          }`}
+                        className={`block text-header hover:text-hover truncate transition duration-150 ${pathname.includes('credentials')? 'hover:text-hover' : ''}`}
                         onClick={(e) => {
                           e.preventDefault()
                           sidebarExpanded ? handleClick() : setSidebarExpanded(true)
@@ -120,7 +119,7 @@ const Sidebar = (props: IProps) => {
                           {/* Icon */}
                           <div className="flex shrink-0 ml-2">
                             <svg
-                              className={`w-3 h-3 shrink-0 ml-1 fill-current text-main ${open && 'rotate-180'}`}
+                              className={`w-3 h-3 shrink-0 ml-1 fill-current text-main ${open? 'rotate-180' : ''}`}
                               viewBox="0 0 12 12"
                             >
                               <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
@@ -129,7 +128,7 @@ const Sidebar = (props: IProps) => {
                         </div>
                       </a>
                       <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
-                        <ul className={`pl-9 mt-1 ${!open && 'hidden'}`}>
+                        <ul className={`pl-9 mt-1 ${open? '' : 'hidden'}`}>
                           <li className="mb-1 last:mb-0">
                             <NavLink
                               end

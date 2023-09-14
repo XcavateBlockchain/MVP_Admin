@@ -1,7 +1,7 @@
-import { ICommonProps } from '../../types'
+import { ICommonProps, IContents } from '../../types'
 
 interface IProps extends ICommonProps {
-  contents: any
+  contents: IContents
 }
 
 const DeveloperCredential = (props: IProps) => {
