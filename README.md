@@ -1,6 +1,6 @@
-# XCavate NFT marketplace Back-office
+# XCavate MVP DID Credential Admin
 
-NFT Marketplace back-office to allow admins to maintain the marketplace.
+Back-office to allow admins to attest DID credentials for testing purposes.
 
 ### Instructions
 
