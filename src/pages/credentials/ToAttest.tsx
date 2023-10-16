@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react'
 import Layout from '../Layout'
 import { getCredentialsToAttest } from '../../api/credential'
 import CredentialsTable from '../../partials/credentials/Table'
-import { ICredential, IResponse } from '../../types'
+import { IDeveloperCredential, ICompanyCredential, IResponse } from '../../types'
 
 interface ICredentialResponse extends IResponse {
   data: {
-    data: ICredential[]
+    data: Array<IDeveloperCredential & ICompanyCredential>
   }
 }
 
 const ToAttest = () => {
-  const [credentials, setCredentials] = useState<Array<ICredential>>([])
+  const [credentials, setCredentials] = useState<Array<IDeveloperCredential & ICompanyCredential>>([])
 
   const getCredentials = async () => {
     const data: ICredentialResponse = await getCredentialsToAttest()

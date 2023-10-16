@@ -2,7 +2,7 @@ export interface ICommonProps {
   className?: string
 }
 
-export interface ICredential {
+export interface IDeveloperCredential {
   _id: string
   userId: {
     fullName: string
@@ -12,13 +12,29 @@ export interface ICredential {
   cTypeTitle: string
   contents: {
     claim: {
-      contents: IContents
+      contents: IDeveloperContents
     }
   }
   revoked: boolean
 }
 
-export interface IContents {
+export interface ICompanyCredential {
+  _id: string
+  userId: {
+    fullName: string
+  }
+  rootHash: string
+  attested: string
+  cTypeTitle: string
+  contents: {
+    claim: {
+      contents: ICompanyContents
+    }
+  }
+  revoked: boolean
+}
+
+export interface IDeveloperContents {
   fullName: string
   phoneNumber: string
   email: string
@@ -26,6 +42,18 @@ export interface IContents {
   profession: string
   idDoc1: string
   idDoc2: string
+}
+
+export interface ICompanyContents {
+  name: string,
+  registrationNumber: string,
+  email: string,
+  phoneNumber: string,
+  address: string,
+  associationWebsite: string,
+  associationMembershipNumber: string,
+  idDoc1: string,
+  idDoc2: string,
 }
 
 export interface IResponse {
