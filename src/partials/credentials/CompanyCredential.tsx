@@ -1,36 +1,44 @@
-import { ICommonProps, IDeveloperContents } from '../../types'
+import { ICommonProps, ICompanyContents } from '../../types'
 
 interface IProps extends ICommonProps {
-  contents: IDeveloperContents
+  contents: ICompanyContents
 }
 
-const DeveloperCredential = (props: IProps) => {
+const CompanyCredential = (props: IProps) => {
   const { contents } = props
   
   return (
     <section className='flex flex-col'>
       <div className='flex flex-row items-center'>
         <label className=' font-poppins-500 text-light text-sm uppercase'>
-          {`Full name: `}
+          {`Company name: `}
         </label>
         <h5 className=' font-poppins-400 text-header text-sm ml-2'>
-          {contents?.fullName || ''}
+          {contents?.name || ''}
         </h5>
       </div>
       <div className='flex flex-row items-center mt-2'>
         <label className=' font-poppins-500 text-light text-sm uppercase'>
-          {`Phone number: `}
+          {`ICompanyCredential: `}
         </label>
         <h5 className=' font-poppins-400 text-header text-sm ml-2'>
-          {contents?.phoneNumber || ''}
+          {contents?.registrationNumber || ''}
         </h5>
       </div>
       <div className='flex flex-row items-center mt-2'>
         <label className=' font-poppins-500 text-light text-sm uppercase'>
-          {`Email: `}
+          {`Company email: `}
         </label>
         <h5 className=' font-poppins-400 text-header text-sm ml-2'>
           {contents?.email || ''}
+        </h5>
+      </div>
+      <div className='flex flex-row items-center mt-2'>
+        <label className=' font-poppins-500 text-light text-sm uppercase'>
+          {`Company phone number: `}
+        </label>
+        <h5 className=' font-poppins-400 text-header text-sm ml-2'>
+          {contents?.phoneNumber || ''}
         </h5>
       </div>
       <div className='flex flex-row items-center mt-2'>
@@ -43,10 +51,18 @@ const DeveloperCredential = (props: IProps) => {
       </div>
       <div className='flex flex-row items-center mt-2'>
         <label className=' font-poppins-500 text-light text-sm uppercase'>
-          {`Profession: `}
+          {`Association website: `}
         </label>
         <h5 className=' font-poppins-400 text-header text-sm ml-2'>
-          {contents?.profession || ''}
+          {contents?.associationWebsite || ''}
+        </h5>
+      </div>
+      <div className='flex flex-row items-center mt-2'>
+        <label className=' font-poppins-500 text-light text-sm uppercase'>
+          {`Association membership number: `}
+        </label>
+        <h5 className=' font-poppins-400 text-header text-sm ml-2'>
+          {contents?.associationMembershipNumber || ''}
         </h5>
       </div>
       <div className='flex flex-row justify-between w-full gap-4'>
@@ -75,4 +91,4 @@ const DeveloperCredential = (props: IProps) => {
   )
 }
 
-export default DeveloperCredential
+export default CompanyCredential

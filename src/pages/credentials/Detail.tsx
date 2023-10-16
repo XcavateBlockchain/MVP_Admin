@@ -5,7 +5,8 @@ import { attestCredential, getCredentialById, revokeCredential } from '../../api
 import Layout from '../Layout'
 import DeveloperCredential from '../../partials/credentials/DeveloperCredential'
 import { LoadingSvgIcon } from '../../assets/svgs'
-import { ICredential, IResponse } from '../../types'
+import { IDeveloperCredential, ICompanyCredential, IResponse } from '../../types'
+import CompanyCredential from '../../partials/credentials/CompanyCredential'
 
 interface ILocation {
   state: {
@@ -15,14 +16,14 @@ interface ILocation {
 
 interface ICredentialResponse extends IResponse {
   data: {
-    data: ICredential
+    data: IDeveloperCredential & ICompanyCredential
     error: string
   }
 }
 
 const CredentialDetail = () => {
   const location = useLocation()
-  const [credential, setCredential] = useState<ICredential>()
+  const [credential, setCredential] = useState<IDeveloperCredential & ICompanyCredential>()
   const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
@@ -87,6 +88,7 @@ const CredentialDetail = () => {
     <Layout title={`Credential detail`}>
       <div className='flex flex-col'>
         {credential?.cTypeTitle === 'developerCredential' && credential?.contents?.claim?.contents && <DeveloperCredential contents={credential?.contents?.claim?.contents} />}
+        {credential?.cTypeTitle === 'company' && credential?.contents?.claim?.contents && <CompanyCredential contents={credential?.contents?.claim?.contents} />}
         {!credential?.attested && !credential?.revoked && <button onClick={attest} className='flex flex-row justify-center items-center w-[360px] h-12 bg-button opacity-[0.5] mt-10 rounded-lg shadow-sm'>
           {loading? <LoadingSvgIcon /> : <h4 className=' font-poppins-400 text-lg text-[#EDFAFA] uppercase'>
             {!credential?.attested && !credential?.revoked && `Attest`}
